@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Registration Form</title>
+    <style>
+      /* General Styling */
+      body {
+        background-color: #f3e5f5; /* Light Purple */
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+
+      h1 {
+        color: #4a148c; /* Dark Purple */
+        text-align: center;
+      }
+
+      form {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="date"],
+      input[type="tel"],
+      input[type="number"],
+      select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      input[type="radio"],
+      input[type="checkbox"] {
+        margin-right: 10px;
+      }
+
+      button {
+        background-color: #4a148c; /* Dark Purple */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        display: block;
+        margin: 20px auto;
+      }
+
+      button:hover {
+        background-color: #6a1b9a; /* Lighter Purple */
+      }
+
+      marquee {
+        background-color: #4a148c; /* Dark Purple */
+        color: white;
+        padding: 10px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>User Registration Form</h1>
+    <hr />
+    <form id="registrationForm" onsubmit="return validateForm()">
+      <label>Name:</label>
+      <input
+        type="text"
+        id="name"
+        placeholder="Enter Your Name"
+        maxlength="30"
+        required
+      /><br /><br />
+
+      <label>Father's Name:</label>
+      <input
+        type="text"
+        id="fatherName"
+        placeholder="Enter Your Father's Name"
+        maxlength="30"
+        required
+      /><br /><br />
+
+      <label>Mother's Name:</label>
+      <input
+        type="text"
+        id="motherName"
+        placeholder="Enter Your Mother's Name"
+        maxlength="30"
+        required
+      /><br /><br />
+
+      <label>DOB:</label>
+      <input type="date" id="dob" required /><br /><br />
+
+      <label>Email ID:</label>
+      <input
+        type="email"
+        id="email"
+        placeholder="Enter mail id"
+        required
+      /><br /><br />
+
+      <label>Gender:</label>
+      <input type="radio" name="gender" value="male" id="male" required />
+      <label for="male">Male</label>
+      <input type="radio" name="gender" value="female" id="female" />
+      <label for="female">Female</label>
+      <input type="radio" name="gender" value="other" id="other" />
+      <label for="other">Other</label><br /><br />
+
+      <label>Mobile No:</label>
+      <select id="countryCode">
+        <option value="+91">+91 (India)</option>
+        <option value="+1">+1 (US)</option>
+        <option value="+81">+81 (Japan)</option>
+      </select>
+      <input
+        type="tel"
+        id="mobile"
+        maxlength="10"
+        placeholder="Enter Mobile No"
+        required
+      /><br /><br />
+
+      <label>Class 10th Marks:</label>
+      <input
+        type="number"
+        id="marks"
+        value="33"
+        min="33"
+        max="100"
+        step="1"
+        required
+      />
+      <span>%</span><br /><br />
+
+      <label>Upload Profile Pic:</label>
+      <input type="file" id="profilePic" accept=".jpg" required /><br /><br />
+
+      <label>Upload Certificates:</label>
+      <input
+        type="file"
+        id="certificates"
+        accept=".pdf"
+        multiple
+        required
+      /><br /><br />
+
+      <input type="checkbox" id="terms" required />
+      <label for="terms">I accept all terms & conditions</label><br /><br />
+
+      <button type="submit">SUBMIT</button>
+    </form>
+    <marquee><h2>Welcome to our page</h2></marquee>
+
+    <script>
+      // JavaScript Validation Function
+      function validateForm() {
+        const name = document.getElementById("name").value;
+        const mobile = document.getElementById("mobile").value;
+        const marks = document.getElementById("marks").value;
+        const terms = document.getElementById("terms").checked;
+
+        // Name Validation
+        if (name.trim() === "") {
+          alert("Please enter your name.");
+          return false;
+        }
+
+        // Mobile Number Validation
+        if (mobile.length !== 10 || isNaN(mobile)) {
+          alert("Please enter a valid 10-digit mobile number.");
+          return false;
+        }
+
+        // Marks Validation
+        if (marks < 33 || marks > 100) {
+          alert("Please enter valid marks (between 33 and 100).");
+          return false;
+        }
+
+        // Terms & Conditions Validation
+        if (!terms) {
+          alert("Please accept the terms & conditions.");
+          return false;
+        }
+
+        // If all validations pass
+        alert("Form submitted successfully!");
+        return true;
+      }
+    </script>
+  </body>
+</html>
